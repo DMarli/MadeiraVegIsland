@@ -1,7 +1,7 @@
 // Ligações entre as páginas
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import {getAuth} from 'firebase/auth'
 
 const routes = [
   {
@@ -31,8 +31,11 @@ const routes = [
   },
   {
     path: '/veg',
-    name: 'ver',
-    component: () => import('../views/SerVegView.vue')
+    name: 'veg',
+    component: () => import('../views/SerVegView.vue'),
+    meta: {
+      requiresAuth: true, //Só pode ver esta página quem estiver logged
+    },
   },
 ]
 
@@ -41,5 +44,20 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth))
+  {
+    if (getAuth().currentUser) //se tiver conta, pode ir para a próxima route
+    {
+      next();
+    } else {
+      alert("Não tem acesso a esta página!"); //mensagem de erro
+      next('/');
+    }
+  }
+    else {
+      next();
+}
+});
 
 export default router

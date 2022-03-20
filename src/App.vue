@@ -14,9 +14,8 @@
   <div class="navbar">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
       <!-- Items à esquerda -->
-      <div
-        class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"
-      >
+      <!-- <div
+        class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="#/veg">Porquê ser Veg?</a>
@@ -25,7 +24,7 @@
             <a class="nav-link" href="#/comer">Restaurantes</a>
           </li>
         </ul>
-      </div>
+      </div> -->
       <!-- Items à esquerda -->
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
@@ -51,6 +50,21 @@
               </button>
             </form>
           </li>
+
+          <li class="nav-item">
+            <form action="#/register">
+              <button type="submit" class="btn">
+                <i class="bi bi-person-lines-fill"></i> REGISTO
+              </button>
+            </form>
+          </li>
+
+          <li class="nav-item">
+              <button @click="handleSignOut" class="btn" v-if="isLoggedIn">
+                <!-- Se estiver Logged vai sair -->
+                <i class="bi bi-person-lines-fill"></i>SAIR
+              </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -68,6 +82,31 @@
   </div>
 </template>
 
+<script setup>
+import {onMounted, ref} from 'vue'
+import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const isLoggedIn = ref(false);
+
+// definir o auth
+let auth;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+   if (user) {
+        isLoggedIn.value = true //se houver utilizador
+      } else {
+        isLoggedIn.value = false // se não houver
+      }
+      });
+});
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+  router.push('/')//Envia para a home
+  });
+};
+</script>
 
 <style>
 /* Importação de fontes do google */
