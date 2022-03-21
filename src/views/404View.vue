@@ -35,7 +35,7 @@ button
   align-content: center;
   text-align: center;
   align-items: center;
-  margin-top: -10%;
+  margin-top: -15%;
   margin-left: 40%;
 }
 
@@ -60,7 +60,7 @@ button
 }
 
 .body_404 {
-  background-repeat:repeat-y;
+  background-repeat: no-repeat;
   background-image: url("@/assets/maratona.jpg");
   background-size: cover;
   background-position: center;
