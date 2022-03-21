@@ -1,10 +1,12 @@
 <template>
+  <div class ="form-group">
 <div class = "registoFlex">
-  <h1>Create an Account</h1>
-  <p><input type="text" placeholder="Email" v-model="email" /></p>
-  <p><input type="password" placeholder="Password" v-model="password" /></p>
-  <p><button @click="register">Criar conta</button></p>
-  <p><button @click="registerGmail">Registar com Gmail</button></p>
+  <h1>Registo</h1><br>
+  <p><input type="text" placeholder="Exemplo@email.com" class="form-control" v-model="email"/></p>
+  <p><input type="password" placeholder="Password" class="form-control" v-model="password" /></p>
+  <p><button @click="register" style="background-color: #7fb414;" class="btn btn-success" >Criar conta</button></p>
+  <br><!-- <p><button @click="registerGmail">Registar com Gmail</button></p> -->
+</div>
 </div>
 </template>
 <script setup>
@@ -27,9 +29,9 @@
       });
   };
 
-  const registerGmail = () => {
+  // const registerGmail = () => {
    
-  };
+  // };
 </script>
 <style scoped>
 .registoFlex
@@ -39,5 +41,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+body{
+ font-family: "Source Sans Pro", sans-serif;
+}
+h1
+{
+  font-family: "Inspiration", cursive;
+  font-size: 60px;
 }
 </style>

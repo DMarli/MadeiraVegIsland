@@ -1,26 +1,73 @@
 <template>
-<div class = "body_404">
-<h1 class = "h1_404">404 - Not Found</h1>
-        <h5>Keep walking!</h5>
-    <div class=".loginBox_404">
-        <a href="src/views/HomeView.vue">
-        <input type="submit" name="" value="Voltar ao início" style="background-color: #7fb414; align-items:flex-end "></a>
+  <div class="body_404">
+    <div class="loginBox_404">
+    <h1>404 - PAGE NOT FOUND</h1>
+      <form action="#/">
+        <button
+          type="submit"
+          style="background-color: #7fb414"
+          class="btn"
+        >
+          Keep walking!
+        </button>
+      </form>
+
+        <!-- Brócolo a correr -->
+    <div class="scroll">
+  
+      <img src="../assets/correr.gif" alt="Correr" width="50%">
+      
+      </div>
+      
     </div>
-</div>
+  </div>
 </template>
 
 <style scoped>
-.body_404
+h1{
+	font-family: 'Source Code Pro', monospace;
+	font-size: 70px;
+	margin-bottom: 10%;
+}
+button
 {
-	background-image: url("@/assets/broccoli1.gif");
-	background-repeat: no-repeat;
-	background-size: 40%;
-	background-color: #b5fff5;
+  font-family: "Source Code Pro", monospace;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  margin-top: -10%;
+  margin-left: 40%;
 }
 
-.h1_404
-{
-	font-size: 100px;
-	margin-bottom: 35%;
+/* Animação do brócolo */
+.scroll {
+  position: fixed;
+  animation-name: across;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-timing-function: linear;
+  bottom: 40px;
+  right: -210px;
 }
+@keyframes across {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(-1700px, 0px);
+  }
+}
+
+.body_404 {
+  background-repeat:repeat-y;
+  background-image: url("@/assets/maratona.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>

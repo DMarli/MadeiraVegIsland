@@ -2,6 +2,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import {getAuth} from 'firebase/auth'
+import PathNotFound from '../views/404View.vue'
 
 const routes = [
   {
@@ -15,20 +16,30 @@ const routes = [
     component: () => import('../views/LoginView.vue')
   },
   {
-    path: '/404',
-    name: '404',
-    component: () => import('../views/404View.vue')
-  },
-  {
     path: '/admin',
     name: 'admin',
-    component: () => import('../views/AdminView.vue')
-  },
+    component: () => import('../views/AdminView.vue'),
+    meta: {
+      requiresAuth: true, //Só pode ver esta página quem estiver logged
+  }
+},
   {
     path: '/register',
     name: 'register',
     component: () => import('../views/RegisterView.vue')
   },
+  {
+    path: '/:pathMatch(.*)*', 
+    component: PathNotFound
+  },
+  {
+    path: '/comentarios',
+    name: 'comentarios',
+    component: () => import('../views/ComentariosView.vue'),
+    meta: {
+      requiresAuth: true, //Só pode ver esta página quem estiver logged
+  }
+},
   {
     path: '/veg',
     name: 'veg',
@@ -36,6 +47,7 @@ const routes = [
     meta: {
       requiresAuth: true, //Só pode ver esta página quem estiver logged
     },
+    
   },
 ]
 

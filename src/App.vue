@@ -8,6 +8,7 @@
   <router-link to="/login"></router-link>
   <router-link to="/register"></router-link>
   <router-link to="/veg"></router-link>
+  <router-link to="/comentarios"></router-link>
   <router-view />
 
   <!-- Navbar -->
@@ -37,7 +38,7 @@
           </li>
           <li class="nav-item">
             <form action="#/admin">
-              <button type="submit" class="btn">
+              <button type="submit" class="btn" v-if="isLoggedIn"> 
                 <i class="bi-gear"></i> ADMIN
               </button>
             </form>
@@ -45,7 +46,7 @@
 
           <li class="nav-item">
             <form action="#/login">
-              <button type="submit" class="btn">
+              <button type="submit" class="btn" v-if="isLoggedIn==false">
                 <i class="bi-people-fill"></i> LOGIN
               </button>
             </form>
@@ -53,17 +54,21 @@
 
           <li class="nav-item">
             <form action="#/register">
-              <button type="submit" class="btn">
-                <i class="bi bi-person-lines-fill"></i> REGISTO
-              </button>
+              <button type="submit" class="btn" v-if="isLoggedIn==false">
+                <i class="bi bi-person-lines-fill"></i> REGISTO</button>
             </form>
           </li>
-
+  <li class="nav-item">
+            <form action="#/veg">
+              <button type="submit" class="btn" v-if="isLoggedIn">
+                <i class="bi bi-heart"></i> VEG LIFE
+                </button>
+            </form>
+          </li>
           <li class="nav-item">
               <button @click="handleSignOut" class="btn" v-if="isLoggedIn">
                 <!-- Se estiver Logged vai sair -->
-                <i class="bi bi-person-lines-fill"></i>SAIR
-              </button>
+                <i class="bi bi-backspace-reverse"></i> SAIR </button>
           </li>
         </ul>
       </div>
@@ -122,6 +127,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
+  background-attachment: fixed;
   /* Viewport, o que vemos a 100% */
 }
 
