@@ -2,7 +2,7 @@
   <div class="flex-container" style="background-color: transparent">
     <div class="vegFlex">
       <div id="content_veg">
-        <h6><br />Bem-vindo à página de Cliente!</h6>
+        <h6>Bem-vindo à página de Cliente!</h6>
       <h1>Razões para ser Vegetariano</h1>
       <img src="@/assets/animal.png" alt="Animal" width="10%" /> 
       <p>Pelos animais.</p>
@@ -52,7 +52,7 @@
 
 #content_veg{
   background-color:white;
-  margin:10%;
+  margin:15%;
 }
 
 h6{
@@ -75,8 +75,6 @@ h1 {
   justify-content: center;
   align-content: center;
   text-align: center;
-  flex-direction: column;
-  margin-top: 5%;
   line-height: 2.5;
   block-size: fit-content;
   width: fit-content;

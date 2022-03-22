@@ -4,6 +4,7 @@
     <div v-for="(item, id) in restaurantes" :key="id">
       <h5 class="card-header">{{item.restaurante}}</h5>
       <div class="card-body">{{item.itemComentario}}</div>
+      <!-- <div class="card-body">{{item.imagem}}</div> -->
     </div>
   </div>
 </template>

@@ -63,7 +63,6 @@
 
 <script>
 import axios from "axios";
-
 export default {
   data() {
     return {
@@ -71,11 +70,8 @@ export default {
         itemComentario: "",
     };
   },
-
   mounted(){
-
   },
-
   methods: {
     guardar() {
       axios
@@ -102,7 +98,6 @@ export default {
   align-items: center;
   text-align: center;
 }
-
 h2 {
   font-family: "Inspiration", cursive;
   font-size: 60px;
