@@ -2,11 +2,7 @@
   <!-- https://codepen.io/SimoTuognia/pen/ZjYJQo -->
 
   <div class="Flex">
-    <v-card
-  elevation="16"
-  outlined
-  shaped
-></v-card>
+    <v-card elevation="16" outlined shaped></v-card>
     <form id="shopping-list">
       <h2>Administrador</h2>
       <!-- <table id="shopping-list-table" class="table table-condensed table-hover">
@@ -59,30 +55,62 @@
       </div>
     </form>
   </div>
+
+  <div>
+    <div class="file-upload-form">
+      Upload an image file:
+      <input type="file" @change="previewImage" accept="image/*" />
+    </div>
+    <div class="image-preview" v-if="imageData.length > 0">
+      <img class="preview" :src="imageData" />
+    </div>
+  </div>
+
+
 </template>
 
 <script>
 import axios from "axios";
 export default {
+  
   data() {
     return {
-        restaurante: "",
-        itemComentario: "",
+      restaurante: "",
+      itemComentario: "",
+      imageData: "", //imagem em string
     };
   },
-  mounted(){
-  },
+  mounted() {},
   methods: {
+    previewImage: function (event) {
+      // Reference to the DOM input element
+      var input = event.target;
+      // Ensure that you have a file before attempting to read it
+      if (input.files && input.files[0]) {
+        // create a new FileReader to read this image and convert to base64 format
+        var reader = new FileReader();
+        // Define a callback function to run, when FileReader finishes its job
+        reader.onload = (e) => {
+          // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
+          // Read image as base64 and set to imageData
+          this.imageData = e.target.result;
+        };
+        // Start the reader job - read file as a data url (base64 format)
+        reader.readAsDataURL(input.files[0]);
+      }
+    },
     guardar() {
       axios
-        .post(
-          "https://madeira-veglab-default-rtdb.firebaseio.com/.json", {
-              restaurante: this.restaurante,
-              itemComentario: this.itemComentario
-  
-          }
-        )
-        .then((response) => (this.articleId = response.data.id, console.log("res " + this.articleId))
+        .post("https://madeira-veglab-default-rtdb.firebaseio.com/.json", {
+          restaurante: this.restaurante,
+          itemComentario: this.itemComentario,
+          imageData: this.imageData, 
+        })
+        .then(
+          (response) => (
+            (this.articleId = response.data.id),
+            console.log("res " + this.articleId)
+          )
         );
     },
   },

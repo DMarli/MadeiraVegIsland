@@ -4,14 +4,14 @@
     <div v-for="(item, id) in restaurantes" :key="id">
       <h5 class="card-header">{{item.restaurante}}</h5>
       <div class="card-body">{{item.itemComentario}}</div>
-      <!-- <div class="card-body">{{item.imagem}}</div> -->
+      <div class="card-body">{{item.imageData}}</div>
+
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
 export default {
   name: "get-request-async-await",
   data() {
@@ -24,7 +24,6 @@ export default {
     const response = await axios.get(
       "https://madeira-veglab-default-rtdb.firebaseio.com/.json"
     );
-
     this.restaurantes = response.data;
   },
 };
