@@ -97,12 +97,12 @@ h2 {
   background-color: rgba(5, 110, 79, 0.9);
   padding-left: 35px;
   padding-right: 35px;
-  padding-top: 35px;
-  padding-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 20px;
   width: 450px;
   margin-top: 5%;
   float: left;
-  left: 50%;
+  left: 52%;
   position: absolute;
   margin-left: -20%;
   -moz-border-radius: 7px;
@@ -145,7 +145,7 @@ h2 {
 /* Caixa do comentário */
 textarea {
   width: 100%;
-  height: 100px;
+  height: 90px;
   line-height: 150%;
 }
 

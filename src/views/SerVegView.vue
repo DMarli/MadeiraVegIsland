@@ -31,7 +31,7 @@
 
       <img src="@/assets/oliveggie.jpg" alt="Olie" width="30%" />
       <p>
-        <br />Para quem quer uma boa refeição vegetariana sem sair de casa. A
+        Para quem quer uma boa refeição vegetariana sem sair de casa. A
         deliciosa lasanha é a protagonista do Oli Veggie 🌵 É a base de
         bolonhesa de soja, bechamel, massa e queijo! Podem escolher a versão
         queijo mozzarella ou queijo vegan. Ambas são uma delícia! 🤤 Para
@@ -86,6 +86,6 @@ h1 {
 }
 /* Espaçamento em torno das imagens, em vez de usarmos o br que é má prática */
 img {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 </style>

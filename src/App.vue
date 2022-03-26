@@ -87,16 +87,16 @@
   </div>
 
   <!-- Footer -->
-  <div
-    class="footer"
-    v-show="
+  <div   v-show="
       $route.path === '/admin' ||
       $route.path === '/login' ||
       $route.path === '/register' ||
       $route.path === '/veg' ||
       $route.path === '/comentarios' ||
-      $route.path === '/'
-    "
+      $route.path === '/'"
+    >
+    <div
+    class="footer"
   >
     <!-- Para esconder o footer -->
     <div id="button"></div>
@@ -105,6 +105,7 @@
         <img src="@/assets/logonovo.png" alt="MadeiraVegIsland" width="15%" />
       </div>
       <h3>© 2022 Requalificar +Digital Class</h3>
+    </div>
     </div>
   </div>
 </template>

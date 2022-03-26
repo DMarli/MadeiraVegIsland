@@ -56,11 +56,13 @@ const register = () => {
 /* 
 Para alinhar */
 .registoFlex {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 7%;
 }
 body {
   font-family: "Source Sans Pro", sans-serif;
