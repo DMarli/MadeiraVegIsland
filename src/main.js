@@ -29,7 +29,6 @@ app.mount("#app");
 
 
 var storage = firebase.storage();
-  // Initialize Firebase
 const db = getFirestore(app);
 const auth = getAuth();
 

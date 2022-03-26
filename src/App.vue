@@ -12,21 +12,20 @@
   <router-view />
 
   <!-- Navbar -->
-  <div class="navbar">
+  <!-- Condição v-if LoggedIn: só surgem estas opções na NavBar se houver sessão ativa, senão, só aparecem as LoggedIn=false -->
+  <div
+    class="navbar"
+    v-show="
+      $route.path === '/admin' ||
+      $route.path === '/login' ||
+      $route.path === '/register' ||
+      $route.path === '/veg' ||
+      $route.path === '/comentarios' ||
+      $route.path === '/'
+    "
+  >
+    <!-- Para esconder a Navbar da página 404, tentei fazer com !==404, mas as páginas de erro, tendo várias hipóteses, só mesmo no /404 é que não ficava a navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <!-- Items à esquerda -->
-      <!-- <div
-        class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#/veg">Porquê ser Veg?</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#/comer">Restaurantes</a>
-          </li>
-        </ul>
-      </div> -->
-      <!-- Items à esquerda -->
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -38,7 +37,7 @@
           </li>
           <li class="nav-item">
             <form action="#/admin">
-              <button type="submit" class="btn" v-if="isLoggedIn"> 
+              <button type="submit" class="btn" v-if="isLoggedIn">
                 <i class="bi-gear"></i> ADMIN
               </button>
             </form>
@@ -46,7 +45,7 @@
 
           <li class="nav-item">
             <form action="#/login">
-              <button type="submit" class="btn" v-if="isLoggedIn==false">
+              <button type="submit" class="btn" v-if="isLoggedIn == false">
                 <i class="bi-people-fill"></i> LOGIN
               </button>
             </form>
@@ -54,21 +53,33 @@
 
           <li class="nav-item">
             <form action="#/register">
-              <button type="submit" class="btn" v-if="isLoggedIn==false">
-                <i class="bi bi-person-lines-fill"></i> REGISTO</button>
+              <button type="submit" class="btn" v-if="isLoggedIn == false">
+                <i class="bi bi-person-lines-fill"></i> REGISTO
+              </button>
             </form>
           </li>
-  <li class="nav-item">
+
+          <li class="nav-item">
             <form action="#/veg">
               <button type="submit" class="btn" v-if="isLoggedIn">
                 <i class="bi bi-heart"></i> VEG LIFE
-                </button>
+              </button>
             </form>
           </li>
+
           <li class="nav-item">
-              <button @click="handleSignOut" class="btn" v-if="isLoggedIn">
-                <!-- Se estiver Logged vai sair -->
-                <i class="bi bi-backspace-reverse"></i> SAIR </button>
+            <form action="#/comentarios">
+              <button type="submit" class="btn" v-if="isLoggedIn">
+                <i class="bi bi-card-text"></i> COMENTÁRIOS
+              </button>
+            </form>
+          </li>
+
+          <li class="nav-item">
+            <button @click="handleSignOut" class="btn" v-if="isLoggedIn">
+              <!-- Click para encerrar sessão, tem v-if porque só podemos sair se tivermos com sessão iniciada-->
+              <i class="bi bi-backspace-reverse"></i> SAIR
+            </button>
           </li>
         </ul>
       </div>
@@ -76,7 +87,18 @@
   </div>
 
   <!-- Footer -->
-  <div class="footer">
+  <div
+    class="footer"
+    v-show="
+      $route.path === '/admin' ||
+      $route.path === '/login' ||
+      $route.path === '/register' ||
+      $route.path === '/veg' ||
+      $route.path === '/comentarios' ||
+      $route.path === '/'
+    "
+  >
+    <!-- Para esconder o footer -->
     <div id="button"></div>
     <div id="container">
       <div class="Img">
@@ -88,10 +110,10 @@
 </template>
 
 <script setup>
-import {onMounted, ref} from 'vue'
-import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth'
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { onMounted, ref } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const isLoggedIn = ref(false);
 
 // definir o auth
@@ -99,16 +121,16 @@ let auth;
 onMounted(() => {
   auth = getAuth();
   onAuthStateChanged(auth, (user) => {
-   if (user) {
-        isLoggedIn.value = true //se houver utilizador
-      } else {
-        isLoggedIn.value = false // se não houver
-      }
-      });
+    if (user) {
+      isLoggedIn.value = true; //se houver utilizador
+    } else {
+      isLoggedIn.value = false; // se não houver
+    }
+  });
 });
 const handleSignOut = () => {
   signOut(auth).then(() => {
-  router.push('/')//Envia para a home
+    router.push("/"); //Envia para a home
   });
 };
 </script>
@@ -204,7 +226,7 @@ body {
 .Img {
   line-height: 1;
 }
-
+/* Alterar texto navbar, important dá prioridade a esta font */
 .navbar {
   font-family: "Source Sans Pro", sans-serif !important;
 }

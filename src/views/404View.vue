@@ -1,36 +1,29 @@
 <template>
   <div class="body_404">
     <div class="loginBox_404">
-    <h1>404 - PAGE NOT FOUND</h1>
+      <h1>404 - PAGE NOT FOUND</h1>
+      <!-- Botão a redirecionar para a página inicial -->
       <form action="#/">
-        <button
-          type="submit"
-          style="background-color: #7fb414"
-          class="btn"
-        >
+        <button type="submit" style="background-color: #7fb414" class="btn">
           Keep walking!
         </button>
       </form>
 
-        <!-- Brócolo a correr -->
-    <div class="scroll">
-  
-      <img src="../assets/correr.gif" alt="Correr" width="50%">
-      
+      <!-- Brócolo a correr -->
+      <div class="correr">
+        <img src="../assets/correr.gif" alt="Correr" width="50%" />
       </div>
-      
     </div>
   </div>
 </template>
 
 <style scoped>
-h1{
-	font-family: 'Source Code Pro', monospace;
-	font-size: 70px;
-	margin-bottom: 10%;
+h1 {
+  font-family: "Source Code Pro", monospace;
+  font-size: 70px;
+  margin-bottom: 10%;
 }
-button
-{
+button {
   font-family: "Source Code Pro", monospace;
   align-content: center;
   text-align: center;
@@ -40,13 +33,13 @@ button
 }
 
 /* Animação do brócolo */
-.scroll {
+.correr {
   position: fixed;
-  animation-name: across;
+  animation-timing-function: linear;
   animation-duration: 10s;
   animation-iteration-count: infinite;
+  animation-name: across;
   animation-play-state: running;
-  animation-timing-function: linear;
   bottom: 40px;
   right: -210px;
 }
@@ -70,4 +63,7 @@ button
   align-items: center;
 }
 
+.navbar{
+     visibility: hidden !important;
+}
 </style>

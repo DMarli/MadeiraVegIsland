@@ -6,8 +6,6 @@
   </div>
 </template>
 
-
-
 <!-- Scoped, CSS que só se aplica a esta página -->
 
 <style scoped>

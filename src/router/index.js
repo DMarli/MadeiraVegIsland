@@ -30,7 +30,7 @@ const routes = [
   },
   {
     path: '/:pathMatch(.*)*', 
-    component: PathNotFound
+    component: PathNotFound 
   },
   {
     path: '/comentarios',
@@ -63,7 +63,7 @@ router.beforeEach((to, from, next) => {
     {
       next();
     } else {
-      alert("Não tem acesso a esta página!"); //mensagem de erro
+      // alert("Não tem acesso a esta página!"); //mensagem de erro
       next('/');
     }
   }

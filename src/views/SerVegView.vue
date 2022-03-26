@@ -1,10 +1,13 @@
 <template>
+<!-- Conteúdo da página -->
   <div class="flex-container" style="background-color: transparent">
     <div class="vegFlex">
       <div id="content_veg">
         <h6>Bem-vindo à página de Cliente!</h6>
+        <!-- Parte 1 -->
       <h1>Razões para ser Vegetariano</h1>
       <img src="@/assets/animal.png" alt="Animal" width="10%" /> 
+      <!-- Style inline senão as imagens da parte 2 também ficavam com width 10% -->
       <p>Pelos animais.</p>
    
       <img src="@/assets/saude.png" alt="Saúde" width="10%" /> 
@@ -15,7 +18,7 @@
    
       <img src="@/assets/justica.png" alt="Justiça" width="10%" />
       <p>Pela justiça.</p>
-    
+    <!-- Parte 2 -->
       <h1>Madeira - Onde Comer?</h1>
       <img src="@/assets/pimpinelas.jpg" alt="Pimpinelas" width="30%" />
       <p>
@@ -49,7 +52,7 @@
 </script>
  
  <style scoped>
-
+/* Para alinhar */
 #content_veg{
   background-color:white;
   margin:15%;
@@ -69,6 +72,8 @@ h1 {
   font-size: 70px;
   line-height: 2;
 }
+
+/* Para ficar alinhar o conteúdo da flex */
 .vegFlex {
   display: flex;
   align-items: center;
@@ -79,6 +84,7 @@ h1 {
   block-size: fit-content;
   width: fit-content;
 }
+/* Espaçamento em torno das imagens, em vez de usarmos o br que é má prática */
 img {
   padding-bottom: 5px;
 }
